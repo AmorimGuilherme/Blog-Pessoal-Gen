@@ -1,6 +1,6 @@
 package br.com.gen.guilh.blogpessoal.secutiry;
 
-	import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,6 +39,7 @@ import org.springframework.security.web.SecurityFilterChain;
 	            .authorizeHttpRequests((auth) -> auth
 	                .requestMatchers("/usuarios/logar").permitAll()
 	                .requestMatchers("/usuarios/cadastrar").permitAll()
+	                .requestMatchers(HttpMethod.GET,"/postagens").permitAll() // Visualizar todas as postagens
 	                .requestMatchers(HttpMethod.OPTIONS).permitAll()
 	                .anyRequest().authenticated())
 	            .httpBasic();
